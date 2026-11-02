@@ -1,11 +1,18 @@
 package dev.java10x.CadastroDeNinjas;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "tb_cadastro")
 public class NinjaModel {
 
-    Long id;
-    String nome;
-    String email;
-    int idade;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    private Long id;
+    private String nome;
+    private String email;
+    private int idade;
 
     public NinjaModel() {
     }
