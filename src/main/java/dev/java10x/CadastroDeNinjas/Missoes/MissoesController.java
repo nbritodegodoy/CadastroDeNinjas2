@@ -37,4 +37,7 @@ public class MissoesController {
     }
     //atualizar missao
 
+    public MissoesModel atualizarMissao(@PathVariable Long id ,@RequestBody MissoesModel missaoAtualizada){
+        return missaoService.atualizarMissao(id, missaoAtualizada);
+    }
 }
