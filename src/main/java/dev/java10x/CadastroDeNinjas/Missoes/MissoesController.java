@@ -1,6 +1,6 @@
 package dev.java10x.CadastroDeNinjas.Missoes;
 
-import dev.java10x.CadastroDeNinjas.Ninjas.Controller.Services.NinjaService;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,7 +16,7 @@ public class MissoesController {
     }
     //Criar missao
     @PostMapping("/criar")
-    public MissoesModel criarMissão(MissoesModel missao){
+    public MissoesDTO criarMissao(@RequestBody MissoesDTO missao){
         return missaoService.criarMissao(missao);
     }
     //Listar todas as missoes
@@ -36,7 +36,7 @@ public class MissoesController {
         missaoService.deletarMissaoPorID(id);
     }
     //atualizar missao
-
+    @PutMapping("/atualizar/{id}")
     public MissoesModel atualizarMissao(@PathVariable Long id ,@RequestBody MissoesModel missaoAtualizada){
         return missaoService.atualizarMissao(id, missaoAtualizada);
     }

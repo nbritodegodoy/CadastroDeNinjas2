@@ -11,14 +11,18 @@ import java.util.Optional;
 public class MissaoService {
 
     private MissoesRepository missoesRepository;
+    private MissoesMapper missoesMapper;
 
-    public MissaoService(MissoesRepository missoesRepository) {
+    public MissaoService(MissoesRepository missoesRepository, MissoesMapper missoesMapper) {
         this.missoesRepository = missoesRepository;
+        this.missoesMapper = missoesMapper;
     }
 
     //Criar missão
-    public MissoesModel criarMissao(@RequestBody MissoesModel missao){
-        return missoesRepository.save(missao);
+    public MissoesDTO criarMissao(MissoesDTO missoesDTO){
+        MissoesModel missoesModel = missoesMapper.map(missoesDTO);
+        missoesModel=missoesRepository.save(missoesModel);
+        return missoesMapper.map(missoesModel);
     }
     //listar todas as missoes
     public List<MissoesModel> listarTodasMissoes(){
